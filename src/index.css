@@ -1,0 +1,10 @@
+:root { color-scheme: dark; }
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  background: #0c0c14;
+}
+
+#root { min-height: 100vh; }

@@ -1,0 +1,47 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: #0c0c14;
+  color: #fff;
+  font-family:
+    'Hiragino Kaku Gothic ProN',
+    'Hiragino Sans',
+    'Noto Sans JP',
+    'Yu Gothic',
+    -apple-system,
+    BlinkMacSystemFont,
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #0c0c14; }
+::-webkit-scrollbar-thumb {
+  background: rgba(240, 192, 64, 0.3);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(240, 192, 64, 0.55);
+}
+
+::selection {
+  background: rgba(240, 192, 64, 0.25);
+  color: #fff;
+}
+
+button { font-family: inherit; }
+a { color: inherit; }
+img { max-width: 100%; }
