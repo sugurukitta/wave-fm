@@ -16,12 +16,15 @@ const Hero = () => {
         <div className="hero-badge">毎週月・木 配信中</div>
 
         <h1 className="hero-title">
-          音楽とテクノロジーを<br />
-          <span className="accent">もっと楽しく。</span>
+          <span className="hero-show-name">🌿 ガジュマルのさんぽ</span>
         </h1>
 
+        <p className="hero-tagline">
+          のんびり歩くように、ラジオを楽しもう。
+        </p>
+
         <p className="hero-desc">
-          WAVE FMは、最新の音楽シーンとデジタル音声の世界を語るラジオ番組です。<br />
+          「ガジュマルのさんぽ」は、最新の音楽シーンとデジタル音声の世界を語るラジオ番組です。<br />
           毎週2回、<strong>ショートニュース</strong>と<strong>ロングトーク</strong>をお届けします。
         </p>
 

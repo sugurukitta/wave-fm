@@ -31,21 +31,16 @@
 }
 
 .logo-wave {
-  font-size: 1.5rem;
-  color: #f0c040;
+  font-size: 1.3rem;
   line-height: 1;
 }
 
 .logo-text {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: 900;
   color: #fff;
-  letter-spacing: 0.05em;
-}
-
-.logo-text em {
-  font-style: normal;
-  color: #f0c040;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
 }
 
 .footer-brand p {

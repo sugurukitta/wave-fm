@@ -17,8 +17,8 @@ const Header = ({ onSearch }) => {
     <header className="header">
       <div className="header-inner">
         <a className="logo" href="#">
-          <span className="logo-wave">〜</span>
-          <span className="logo-text">WAVE<em>FM</em></span>
+          <span className="logo-wave">🌿</span>
+          <span className="logo-text">ガジュマルのさんぽ</span>
         </a>
 
         <nav className={`nav ${menuOpen ? 'open' : ''}`}>

@@ -9,10 +9,10 @@ const Footer = () => {
         <div className="footer-top">
           <div className="footer-brand">
             <a className="logo" href="#">
-              <span className="logo-wave">〜</span>
-              <span className="logo-text">WAVE<em>FM</em></span>
+              <span className="logo-wave">🌿</span>
+              <span className="logo-text">ガジュマルのさんぽ</span>
             </a>
-            <p>音楽とテクノロジーを、もっと楽しく。<br />毎週月・木曜配信のラジオ番組です。</p>
+            <p>のんびり歩くように、ラジオを楽しもう。<br />毎週月・木曜配信のラジオ番組です。</p>
             <div className="social-row">
               <a href="#" className="social-btn">𝕏 Twitter</a>
               <a href="#" className="social-btn">Discord</a>
