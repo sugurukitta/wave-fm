@@ -7,8 +7,9 @@ const NAV_ITEMS = [
   { label: 'エピソード', to: '/episodes' },
   { label: 'パーソナリティ', to: '/hosts' },
   { label: '番組について', to: '/about' },
-  { label: 'コラム', to: '/column', badge: 'note' },
 ]
+
+const NOTE_URL = 'https://note.com/ready_hawk8653'
 
 const Header = ({ onSearch }) => {
   const [searchOpen, setSearchOpen] = useState(false)
@@ -37,13 +38,21 @@ const Header = ({ onSearch }) => {
               key={item.to}
               to={item.to}
               end={item.to === '/'}
-              className={({ isActive }) => `nav-link ${isActive ? 'active' : ''} ${item.badge ? 'nav-link-with-badge' : ''}`}
+              className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
               onClick={() => setMenuOpen(false)}
             >
               {item.label}
-              {item.badge && <span className="nav-badge">{item.badge}</span>}
             </NavLink>
           ))}
+          <a
+            href={NOTE_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="nav-link nav-note-link"
+            onClick={() => setMenuOpen(false)}
+          >
+            コラム <span className="nav-badge">note</span>
+          </a>
         </nav>
 
         <div className="header-actions">
