@@ -18,6 +18,7 @@ export const episodes = [
     ],
     spotifyUrl: `https://open.spotify.com/show/${SPOTIFY_SHOW_ID}`,
     appleUrl: 'https://podcasts.apple.com/us/podcast/ガジュマルのさんぽ/id1861681070',
+    youtubeUrl: 'https://youtube.com/channel/UCuUfqBJAXMFKIVbo-0LPOvg',
     amazonUrl: 'https://x.gd/MfDnn',
   },
   {
@@ -36,6 +37,7 @@ export const episodes = [
     ],
     spotifyUrl: `https://open.spotify.com/show/${SPOTIFY_SHOW_ID}`,
     appleUrl: 'https://podcasts.apple.com/us/podcast/ガジュマルのさんぽ/id1861681070',
+    youtubeUrl: 'https://youtube.com/channel/UCuUfqBJAXMFKIVbo-0LPOvg',
     amazonUrl: 'https://x.gd/MfDnn',
   },
   {
@@ -55,6 +57,7 @@ export const episodes = [
     ],
     spotifyUrl: `https://open.spotify.com/show/${SPOTIFY_SHOW_ID}`,
     appleUrl: 'https://podcasts.apple.com/us/podcast/ガジュマルのさんぽ/id1861681070',
+    youtubeUrl: 'https://youtube.com/channel/UCuUfqBJAXMFKIVbo-0LPOvg',
     amazonUrl: 'https://x.gd/MfDnn',
   },
 ]

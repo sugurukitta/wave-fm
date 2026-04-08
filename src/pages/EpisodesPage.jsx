@@ -5,8 +5,12 @@ import './EpisodesPage.css'
 const PLATFORMS = [
   { label: 'Spotify',        id: 'spotify',  color: '#1DB954' },
   { label: 'Apple Podcasts', id: 'apple',    color: '#fc3c44' },
+  { label: 'YouTube',        id: 'youtube',  color: '#FF0000' },
   { label: 'Amazon Music',   id: 'amazon',   color: '#00A8E1' },
 ]
+
+// チャンネルID UCuUfqBJAXMFKIVbo-0LPOvg → アップロード再生リスト UUuUfqBJAXMFKIVbo-0LPOvg
+const YOUTUBE_PLAYLIST = 'UUuUfqBJAXMFKIVbo-0LPOvg'
 
 const EpisodesPage = () => {
   const [activePlatform, setActivePlatform] = useState('spotify')
@@ -63,6 +67,19 @@ const EpisodesPage = () => {
                 allow="autoplay *; encrypted-media *; clipboard-write"
                 className="embed-player"
                 style={{ width: '100%', overflow: 'hidden', borderRadius: '12px', background: 'transparent' }}
+              />
+            )}
+            {activePlatform === 'youtube' && (
+              <iframe
+                title="YouTube Player"
+                src={`https://www.youtube.com/embed/videoseries?list=${YOUTUBE_PLAYLIST}`}
+                width="100%"
+                height="400"
+                frameBorder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+                loading="lazy"
+                className="embed-player"
               />
             )}
             {activePlatform === 'amazon' && (
@@ -140,6 +157,9 @@ const EpisodesPage = () => {
                         </a>
                         <a href={ep.appleUrl} target="_blank" rel="noopener noreferrer" className="ep-platform-btn apple">
                           🎙️ Apple Podcasts
+                        </a>
+                        <a href={ep.youtubeUrl} target="_blank" rel="noopener noreferrer" className="ep-platform-btn youtube">
+                          ▶️ YouTube
                         </a>
                         <a href={ep.amazonUrl} target="_blank" rel="noopener noreferrer" className="ep-platform-btn amazon">
                           🎶 Amazon Music

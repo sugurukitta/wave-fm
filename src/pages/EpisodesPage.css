@@ -351,6 +351,12 @@
   color: #fc3c44;
 }
 
+.ep-platform-btn.youtube {
+  background: rgba(255,0,0,0.1);
+  border-color: rgba(255,0,0,0.25);
+  color: #ff4444;
+}
+
 .ep-platform-btn.amazon {
   background: rgba(0,168,225,0.12);
   border-color: rgba(0,168,225,0.3);
