@@ -28,18 +28,17 @@
 }
 
 .logo-img {
-  height: 42px;
+  height: 46px;
   width: auto;
   object-fit: contain;
   display: block;
-  /* 画像の余白（白背景）をトリミングする視覚効果 */
-  filter: drop-shadow(0 1px 3px rgba(101,67,33,0.15));
+  mix-blend-mode: multiply;
   transition: opacity 0.2s, transform 0.2s;
 }
 
 .logo:hover .logo-img {
-  opacity: 0.85;
-  transform: scale(1.03);
+  opacity: 0.8;
+  transform: scale(1.04);
 }
 
 .nav {

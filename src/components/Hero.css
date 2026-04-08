@@ -54,21 +54,17 @@
 }
 
 .hero-logo-img {
-  /* 画像の白背景を考慮して横幅を設定 */
-  max-width: min(420px, 90%);
+  max-width: min(460px, 96%);
   height: auto;
   display: block;
   object-fit: contain;
-  filter:
-    drop-shadow(0 4px 12px rgba(101,67,33,0.2))
-    drop-shadow(0 1px 4px rgba(101,67,33,0.15));
-  transition: filter 0.3s, transform 0.3s;
-  animation: heroLogoFloat 4s ease-in-out infinite;
+  mix-blend-mode: multiply;
+  animation: heroLogoFloat 5s ease-in-out infinite;
 }
 
 @keyframes heroLogoFloat {
-  0%, 100% { transform: translateY(0); }
-  50%       { transform: translateY(-6px); }
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-7px); }
 }
 
 .hero-desc {
