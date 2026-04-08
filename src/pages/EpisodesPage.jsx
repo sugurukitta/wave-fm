@@ -1,19 +1,6 @@
 import { useState } from 'react'
-import { useEpisodes } from '../hooks/useEpisodes'
-import { SPOTIFY_SHOW_ID } from '../data/episodes'
+import { episodes, SPOTIFY_SHOW_ID } from '../data/episodes'
 import './EpisodesPage.css'
-
-const SkeletonCard = () => (
-  <div className="ep-archive-card ep-skeleton-card">
-    <div className="ep-skel-row">
-      <div className="ep-skel ep-skel-num" />
-      <div className="ep-skel-meta">
-        <div className="ep-skel ep-skel-title" />
-        <div className="ep-skel ep-skel-sub" />
-      </div>
-    </div>
-  </div>
-)
 
 const PLATFORMS = [
   { label: 'Spotify',        id: 'spotify',  color: '#1DB954' },
@@ -28,7 +15,6 @@ const YOUTUBE_PLAYLIST = 'UUuUfqBJAXMFKIVbo-0LPOvg'
 const EpisodesPage = () => {
   const [activePlatform, setActivePlatform] = useState('spotify')
   const [openEp, setOpenEp] = useState(null)
-  const { episodes, loading, error } = useEpisodes()
 
   const toggleEp = (id) => setOpenEp((prev) => (prev === id ? null : id))
 
@@ -118,31 +104,9 @@ const EpisodesPage = () => {
 
         {/* エピソード詳細一覧 */}
         <div className="ep-archive">
-          <h2 className="ep-archive-title">
-            エピソード詳細
-            {!loading && !error && (
-              <span className="ep-count-badge">{episodes.length}件</span>
-            )}
-          </h2>
-
-          {/* ローディング */}
-          {loading && (
-            <div className="ep-archive-list">
-              {[...Array(6)].map((_, i) => <SkeletonCard key={i} />)}
-            </div>
-          )}
-
-          {/* エラー */}
-          {error && !loading && (
-            <div className="ep-fetch-error">
-              <span>😢</span>
-              <p>エピソードの読み込みに失敗しました。</p>
-              <p className="ep-fetch-error-detail">{error}</p>
-            </div>
-          )}
-
+          <h2 className="ep-archive-title">エピソード詳細</h2>
           <div className="ep-archive-list">
-            {!loading && !error && episodes.map((ep) => (
+            {episodes.map((ep) => (
               <div key={ep.id} className={`ep-archive-card ${openEp === ep.id ? 'open' : ''}`}>
 
                 {/* カードヘッダー（クリックで開閉） */}
@@ -217,6 +181,5 @@ const EpisodesPage = () => {
     </div>
   )
 }
-
 
 export default EpisodesPage
