@@ -1,12 +1,12 @@
 .column-page {
-  padding: 100px 2rem 6rem;
+  padding: 86px 2rem 4rem;
   min-height: 100vh;
   background: var(--bg);
 }
 
 .column-page-inner { max-width: 960px; margin: 0 auto; }
 
-.column-page-header { margin-bottom: 2.5rem; }
+.column-page-header { margin-bottom: 1.5rem; }
 
 .column-header-title-row {
   display: flex;
