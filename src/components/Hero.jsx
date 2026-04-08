@@ -19,37 +19,14 @@ const Hero = () => {
 
         {/* 左カラム：テキスト情報 */}
         <div className="hero-text">
-          <div className="hero-badge">毎週月・木 配信中</div>
-
           <h1 className="hero-title">
             <span className="hero-show-name">ガジュマルのさんぽ</span>
           </h1>
-
-          <p className="hero-tagline">
-            のんびり歩くように、ラジオを楽しもう。
-          </p>
 
           <p className="hero-desc">
             再エネを作る仕事をしている3人が、日常のそばにある、<br />
             実はまだよく知らない世界を探求する番組です。
           </p>
-
-          <div className="schedule-badges">
-            <div className="schedule-badge short">
-              <span className="badge-dot" />
-              <div>
-                <strong>毎週月曜</strong>
-                <span>〜15分 ショートニュース</span>
-              </div>
-            </div>
-            <div className="schedule-badge long">
-              <span className="badge-dot" />
-              <div>
-                <strong>毎週木曜</strong>
-                <span>〜60分 ロングトーク</span>
-              </div>
-            </div>
-          </div>
 
           <div className="platforms">
             <span className="platforms-label">配信中のプラットフォーム</span>
