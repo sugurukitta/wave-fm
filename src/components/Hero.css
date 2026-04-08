@@ -28,9 +28,16 @@
 }
 
 .hero-inner {
-  max-width: 860px;
+  max-width: 1100px;
   margin: 0 auto;
   position: relative;
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 4rem;
+  align-items: center;
+}
+
+.hero-text {
   display: flex;
   flex-direction: column;
   gap: 1.8rem;
@@ -238,4 +245,119 @@
 .host-chip span {
   font-size: 0.75rem;
   color: rgba(255, 255, 255, 0.45);
+}
+
+/* ── アイコンエリア ── */
+.hero-icon-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 360px;
+  height: 360px;
+  flex-shrink: 0;
+}
+
+.hero-icon-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(72, 180, 100, 0.2);
+  animation: spin-slow linear infinite;
+  pointer-events: none;
+}
+
+.hero-icon-ring-outer {
+  width: 340px;
+  height: 340px;
+  border-color: rgba(72, 180, 100, 0.15);
+  border-style: dashed;
+  animation-duration: 30s;
+}
+
+.hero-icon-ring-inner {
+  width: 290px;
+  height: 290px;
+  border-color: rgba(240, 192, 64, 0.18);
+  border-style: dashed;
+  animation-duration: 20s;
+  animation-direction: reverse;
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+.hero-icon-frame {
+  width: 240px;
+  height: 240px;
+  border-radius: 36px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow:
+    0 0 0 6px rgba(72, 180, 100, 0.08),
+    0 0 60px rgba(72, 180, 100, 0.15),
+    0 20px 60px rgba(0, 0, 0, 0.5);
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hero-icon-frame:hover {
+  transform: scale(1.03) translateY(-4px);
+  box-shadow:
+    0 0 0 8px rgba(72, 180, 100, 0.12),
+    0 0 80px rgba(72, 180, 100, 0.25),
+    0 28px 70px rgba(0, 0, 0, 0.55);
+}
+
+.hero-icon-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-icon-label {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(12, 12, 20, 0.85);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  padding: 0.3rem 0.9rem;
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 0.12em;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  white-space: nowrap;
+}
+
+.hero-icon-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #48b464;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@media (max-width: 960px) {
+  .hero-inner {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+
+  .hero-icon-wrap {
+    width: 260px;
+    height: 260px;
+    margin: 0 auto;
+  }
+
+  .hero-icon-ring-outer { width: 250px; height: 250px; }
+  .hero-icon-ring-inner { width: 210px; height: 210px; }
+  .hero-icon-frame { width: 180px; height: 180px; border-radius: 28px; }
 }
