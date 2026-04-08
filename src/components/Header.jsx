@@ -1,29 +1,46 @@
 import { useState } from 'react'
+import { NavLink, useNavigate } from 'react-router-dom'
 import './Header.css'
 
-const NAV_ITEMS = ['エピソード', 'ホスト', 'ニュースレター', '番組について']
+const NAV_ITEMS = [
+  { label: 'ホーム', to: '/' },
+  { label: 'エピソード', to: '/episodes' },
+  { label: 'パーソナリティ', to: '/hosts' },
+  { label: '番組について', to: '/about' },
+]
 
 const Header = ({ onSearch }) => {
   const [searchOpen, setSearchOpen] = useState(false)
   const [query, setQuery] = useState('')
   const [menuOpen, setMenuOpen] = useState(false)
+  const navigate = useNavigate()
 
   const handleSearch = (e) => {
     e.preventDefault()
     onSearch(query)
+    navigate('/')
+    setSearchOpen(false)
   }
 
   return (
     <header className="header">
       <div className="header-inner">
-        <a className="logo" href="#">
+        <NavLink className="logo" to="/" onClick={() => setMenuOpen(false)}>
           <span className="logo-wave">🌿</span>
           <span className="logo-text">ガジュマルのさんぽ</span>
-        </a>
+        </NavLink>
 
         <nav className={`nav ${menuOpen ? 'open' : ''}`}>
           {NAV_ITEMS.map((item) => (
-            <a key={item} href="#" className="nav-link">{item}</a>
+            <NavLink
+              key={item.to}
+              to={item.to}
+              end={item.to === '/'}
+              className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
+              onClick={() => setMenuOpen(false)}
+            >
+              {item.label}
+            </NavLink>
           ))}
         </nav>
 
@@ -44,7 +61,6 @@ const Header = ({ onSearch }) => {
               🔍
             </button>
           )}
-          <a href="#" className="nav-link discord-link">Discord</a>
           <button
             className="hamburger"
             onClick={() => setMenuOpen(!menuOpen)}

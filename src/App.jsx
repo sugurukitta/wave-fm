@@ -1,33 +1,50 @@
 import { useState } from 'react'
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import Header from './components/Header'
-import Hero from './components/Hero'
-import EpisodeList from './components/EpisodeList'
-import Player from './components/Player'
 import Footer from './components/Footer'
+import Player from './components/Player'
+import HomePage from './pages/HomePage'
+import EpisodesPage from './pages/EpisodesPage'
+import HostsPage from './pages/HostsPage'
+import AboutPage from './pages/AboutPage'
 import './App.css'
 
-function App() {
+const AppInner = () => {
   const [searchQuery, setSearchQuery] = useState('')
   const [playingEpisode, setPlayingEpisode] = useState(null)
+  const location = useLocation()
 
   const handlePlay = (episode) => {
-    if (playingEpisode?.id === episode.id) {
-      setPlayingEpisode(null)
-    } else {
-      setPlayingEpisode(episode)
-    }
+    setPlayingEpisode((prev) => prev?.id === episode.id ? null : episode)
   }
 
   return (
     <div style={{ paddingBottom: playingEpisode ? '90px' : 0 }}>
       <Header onSearch={setSearchQuery} />
       <main>
-        <Hero />
-        <EpisodeList
-          searchQuery={searchQuery}
-          onPlay={handlePlay}
-          playingId={playingEpisode?.id}
-        />
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <HomePage
+                searchQuery={searchQuery}
+                onPlay={handlePlay}
+                playingId={playingEpisode?.id}
+              />
+            }
+          />
+          <Route
+            path="/episodes"
+            element={
+              <EpisodesPage
+                onPlay={handlePlay}
+                playingId={playingEpisode?.id}
+              />
+            }
+          />
+          <Route path="/hosts" element={<HostsPage />} />
+          <Route path="/about" element={<AboutPage />} />
+        </Routes>
       </main>
       <Footer />
       <Player
@@ -35,6 +52,14 @@ function App() {
         onClose={() => setPlayingEpisode(null)}
       />
     </div>
+  )
+}
+
+function App() {
+  return (
+    <BrowserRouter>
+      <AppInner />
+    </BrowserRouter>
   )
 }
 

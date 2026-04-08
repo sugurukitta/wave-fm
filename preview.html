@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ガジュマルのさんぽ — プレビュー</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #0c0c14;
+      font-family: 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', sans-serif;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .toolbar {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      background: #1a1a2e;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      padding: 0.5rem 1rem;
+      flex-shrink: 0;
+    }
+
+    .dots {
+      display: flex;
+      gap: 6px;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+
+    .dot-red    { background: #ff5f57; }
+    .dot-yellow { background: #febc2e; }
+    .dot-green  { background: #28c840; }
+
+    .url-bar {
+      flex: 1;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      padding: 0.3rem 0.8rem;
+      color: rgba(255,255,255,0.6);
+      font-size: 0.82rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .url-bar span { color: rgba(255,255,255,0.3); }
+
+    .size-btns {
+      display: flex;
+      gap: 0.4rem;
+    }
+
+    .size-btn {
+      background: none;
+      border: 1px solid rgba(255,255,255,0.15);
+      color: rgba(255,255,255,0.5);
+      padding: 0.25rem 0.65rem;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background 0.15s, color 0.15s;
+    }
+
+    .size-btn:hover,
+    .size-btn.active {
+      background: rgba(108,99,255,0.2);
+      border-color: rgba(108,99,255,0.4);
+      color: #a89cff;
+    }
+
+    .frame-wrap {
+      flex: 1;
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      overflow: auto;
+      padding: 1rem;
+      background: #080812;
+    }
+
+    .device-frame {
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.07);
+      transition: width 0.3s ease, height 0.3s ease;
+    }
+
+    .device-frame iframe {
+      display: block;
+      border: none;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* デフォルト：デスクトップ */
+    .device-frame.desktop {
+      width: min(1200px, 100%);
+      height: calc(100vh - 130px);
+    }
+
+    .device-frame.tablet {
+      width: 768px;
+      height: 1024px;
+    }
+
+    .device-frame.mobile {
+      width: 390px;
+      height: 844px;
+      border-radius: 40px;
+      box-shadow: 0 0 0 10px #1a1a2e, 0 0 0 11px rgba(255,255,255,0.08), 0 30px 60px rgba(0,0,0,0.7);
+    }
+
+    .open-btn {
+      background: rgba(108,99,255,0.15);
+      border: 1px solid rgba(108,99,255,0.3);
+      color: #a89cff;
+      padding: 0.3rem 0.9rem;
+      border-radius: 6px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      transition: background 0.15s;
+    }
+
+    .open-btn:hover {
+      background: rgba(108,99,255,0.25);
+    }
+  </style>
+</head>
+<body>
+  <div class="toolbar">
+    <div class="dots">
+      <div class="dot dot-red"></div>
+      <div class="dot dot-yellow"></div>
+      <div class="dot dot-green"></div>
+    </div>
+    <div class="url-bar">
+      <span>🔒</span> localhost:5173
+    </div>
+    <div class="size-btns">
+      <button class="size-btn active" onclick="setDevice('desktop', this)">🖥 PC</button>
+      <button class="size-btn" onclick="setDevice('tablet', this)">📱 タブレット</button>
+      <button class="size-btn" onclick="setDevice('mobile', this)">📱 スマホ</button>
+    </div>
+    <a href="http://localhost:5173" target="_blank" class="open-btn">↗ 別タブで開く</a>
+  </div>
+
+  <div class="frame-wrap">
+    <div class="device-frame desktop" id="frame">
+      <iframe src="http://localhost:5173" id="preview-iframe"></iframe>
+    </div>
+  </div>
+
+  <script>
+    function setDevice(type, btn) {
+      const frame = document.getElementById('frame');
+      frame.className = 'device-frame ' + type;
+      document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    }
+  </script>
+</body>
+</html>
