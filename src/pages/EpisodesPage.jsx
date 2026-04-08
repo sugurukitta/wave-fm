@@ -271,7 +271,7 @@ const EpisodesPage = () => {
                   </div>
                 )}
               </div>
-            )}
+            ))}
           </div>
         </div>
 
