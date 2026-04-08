@@ -87,6 +87,56 @@
   display: block;
 }
 
+/* YouTube リダイレクト */
+.youtube-redirect {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+.youtube-redirect-icon {
+  font-size: 3rem;
+  line-height: 1;
+}
+
+.youtube-redirect-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #ff4444;
+  margin: 0;
+}
+
+.youtube-redirect-desc {
+  color: rgba(255,255,255,0.55);
+  font-size: 0.9rem;
+  margin: 0;
+  line-height: 1.7;
+}
+
+.youtube-open-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(255,0,0,0.12);
+  border: 1px solid rgba(255,0,0,0.3);
+  color: #ff4444;
+  padding: 0.7rem 1.6rem;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.15s;
+  margin-top: 0.5rem;
+}
+
+.youtube-open-btn:hover {
+  background: rgba(255,0,0,0.22);
+  transform: translateY(-2px);
+}
+
 /* Amazon リダイレクト */
 .amazon-redirect {
   display: flex;

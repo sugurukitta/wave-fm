@@ -70,17 +70,22 @@ const EpisodesPage = () => {
               />
             )}
             {activePlatform === 'youtube' && (
-              <iframe
-                title="YouTube Player"
-                src={`https://www.youtube.com/embed/videoseries?list=${YOUTUBE_PLAYLIST}`}
-                width="100%"
-                height="400"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                loading="lazy"
-                className="embed-player"
-              />
+              <div className="youtube-redirect">
+                <div className="youtube-redirect-icon">▶️</div>
+                <p className="youtube-redirect-title">YouTubeで視聴する</p>
+                <p className="youtube-redirect-desc">
+                  YouTubeはサイト内での埋め込み再生ができないため、<br />
+                  YouTubeのチャンネルページに移動して視聴できます。
+                </p>
+                <a
+                  href="https://youtube.com/channel/UCuUfqBJAXMFKIVbo-0LPOvg"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="youtube-open-btn"
+                >
+                  ▶️ YouTubeで開く →
+                </a>
+              </div>
             )}
             {activePlatform === 'amazon' && (
               <div className="amazon-redirect">
