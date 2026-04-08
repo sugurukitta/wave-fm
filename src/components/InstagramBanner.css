@@ -11,14 +11,22 @@
 .ig-banner-card {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 2rem;
+  gap: 1.6rem;
   padding: 1.8rem 2.2rem;
   border-radius: 20px;
   background: linear-gradient(135deg, rgba(238,42,123,0.08) 0%, rgba(98,40,215,0.1) 100%);
   border: 1px solid rgba(238,42,123,0.2);
   position: relative;
   overflow: hidden;
+  text-decoration: none;
+  cursor: pointer;
+  transition: border-color 0.2s, transform 0.15s, background 0.2s;
+}
+
+.ig-banner-card:hover {
+  border-color: rgba(238,42,123,0.45);
+  background: linear-gradient(135deg, rgba(238,42,123,0.13) 0%, rgba(98,40,215,0.15) 100%);
+  transform: translateY(-2px);
 }
 
 .ig-banner-card::before {
@@ -30,14 +38,6 @@
   height: 200px;
   background: radial-gradient(circle, rgba(238,42,123,0.12), transparent 70%);
   pointer-events: none;
-}
-
-.ig-banner-left {
-  display: flex;
-  align-items: center;
-  gap: 1.4rem;
-  flex: 1;
-  min-width: 0;
 }
 
 .ig-logo-wrap {
@@ -91,25 +91,17 @@
   line-height: 1.55;
 }
 
-.ig-follow-btn {
+.ig-banner-arrow {
+  margin-left: auto;
   flex-shrink: 0;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  padding: 0.65rem 1.6rem;
-  border-radius: 50px;
-  font-size: 0.9rem;
-  font-weight: 700;
-  text-decoration: none;
-  color: #fff;
-  background: linear-gradient(135deg, #f9ce34 0%, #ee2a7b 50%, #6228d7 100%);
-  transition: opacity 0.2s, transform 0.15s;
-  white-space: nowrap;
+  font-size: 1.2rem;
+  color: rgba(255,255,255,0.3);
+  transition: color 0.2s, transform 0.2s;
 }
 
-.ig-follow-btn:hover {
-  opacity: 0.88;
-  transform: translateY(-2px);
+.ig-banner-card:hover .ig-banner-arrow {
+  color: #ee2a7b;
+  transform: translateX(4px);
 }
 
 @media (max-width: 600px) {
@@ -119,8 +111,7 @@
     padding: 1.4rem 1.4rem;
   }
 
-  .ig-follow-btn {
-    width: 100%;
-    justify-content: center;
+  .ig-banner-arrow {
+    display: none;
   }
 }
