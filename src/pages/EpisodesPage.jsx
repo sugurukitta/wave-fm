@@ -18,6 +18,8 @@ const EpisodesPage = () => {
   const [activePlatform, setActivePlatform] = useState('spotify')
   const [openEp, setOpenEp] = useState(null)
   const [playingEp, setPlayingEp] = useState(null)
+  const [searchQuery, setSearchQuery] = useState('')
+  const [sortOrder, setSortOrder] = useState('newest') // 'newest' | 'oldest'
 
   const toggleEp = (id) => {
     setOpenEp((prev) => (prev === id ? null : id))
@@ -29,6 +31,20 @@ const EpisodesPage = () => {
     setPlayingEp((prev) => (prev === id ? null : id))
     setOpenEp(id)
   }
+
+  const filtered = episodes
+    .filter((ep) => {
+      if (!searchQuery.trim()) return true
+      const q = searchQuery.toLowerCase()
+      return (
+        ep.title.toLowerCase().includes(q) ||
+        (ep.fullTitle && ep.fullTitle.toLowerCase().includes(q)) ||
+        ep.description.toLowerCase().includes(q) ||
+        ep.tags.some((t) => t.toLowerCase().includes(q)) ||
+        ep.refs.some((r) => r.label.toLowerCase().includes(q))
+      )
+    })
+    .sort((a, b) => sortOrder === 'newest' ? b.id - a.id : a.id - b.id)
 
   return (
     <div className="ep-page">
@@ -116,9 +132,53 @@ const EpisodesPage = () => {
 
         {/* エピソード詳細一覧 */}
         <div className="ep-archive">
-          <h2 className="ep-archive-title">エピソード詳細</h2>
+
+          {/* 検索・ソートコントロール */}
+          <div className="ep-controls">
+            <div className="ep-search-wrap">
+              <span className="ep-search-icon">🔍</span>
+              <input
+                type="text"
+                className="ep-search-input"
+                placeholder="タイトル・キーワードで検索..."
+                value={searchQuery}
+                onChange={(e) => { setSearchQuery(e.target.value); setOpenEp(null) }}
+              />
+              {searchQuery && (
+                <button className="ep-search-clear" onClick={() => setSearchQuery('')}>✕</button>
+              )}
+            </div>
+            <div className="ep-sort-btns">
+              <button
+                className={`ep-sort-btn ${sortOrder === 'newest' ? 'active' : ''}`}
+                onClick={() => setSortOrder('newest')}
+              >
+                新しい順
+              </button>
+              <button
+                className={`ep-sort-btn ${sortOrder === 'oldest' ? 'active' : ''}`}
+                onClick={() => setSortOrder('oldest')}
+              >
+                古い順
+              </button>
+            </div>
+          </div>
+
+          {/* 件数表示 */}
+          <div className="ep-result-info">
+            {searchQuery
+              ? <span>{filtered.length}件ヒット <span className="ep-query-text">「{searchQuery}」</span></span>
+              : <span>全{filtered.length}件</span>
+            }
+          </div>
+
           <div className="ep-archive-list">
-            {episodes.map((ep) => (
+            {filtered.length === 0 ? (
+              <div className="ep-no-result">
+                <span>🔍</span>
+                <p>「{searchQuery}」に一致するエピソードが見つかりませんでした。</p>
+              </div>
+            ) : filtered.map((ep) => (
               <div key={ep.id} className={`ep-archive-card ${openEp === ep.id ? 'open' : ''}`}>
 
                 {/* カードヘッダー（クリックで開閉） */}
@@ -211,7 +271,7 @@ const EpisodesPage = () => {
                   </div>
                 )}
               </div>
-            ))}
+            )}
           </div>
         </div>
 
