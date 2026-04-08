@@ -28,8 +28,8 @@ const Hero = () => {
           </p>
 
           <p className="hero-desc">
-            「ガジュマルのさんぽ」は、最新の音楽シーンとデジタル音声の世界を語るラジオ番組です。
-            毎週2回、<strong>ショートニュース</strong>と<strong>ロングトーク</strong>をお届けします。
+            再エネを作る仕事をしている3人が、日常のそばにある、<br />
+            実はまだよく知らない世界を探求する番組です。
           </p>
 
           <div className="schedule-badges">

@@ -7,6 +7,7 @@ const NAV_ITEMS = [
   { label: 'エピソード', to: '/episodes' },
   { label: 'パーソナリティ', to: '/hosts' },
   { label: '番組について', to: '/about' },
+  { label: 'コラム', to: '/column', badge: 'note' },
 ]
 
 const Header = ({ onSearch }) => {
@@ -36,10 +37,11 @@ const Header = ({ onSearch }) => {
               key={item.to}
               to={item.to}
               end={item.to === '/'}
-              className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}
+              className={({ isActive }) => `nav-link ${isActive ? 'active' : ''} ${item.badge ? 'nav-link-with-badge' : ''}`}
               onClick={() => setMenuOpen(false)}
             >
               {item.label}
+              {item.badge && <span className="nav-badge">{item.badge}</span>}
             </NavLink>
           ))}
         </nav>

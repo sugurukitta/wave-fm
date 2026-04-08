@@ -1,0 +1,239 @@
+.column-page {
+  padding: 100px 2rem 6rem;
+  min-height: 100vh;
+  background: #0c0c14;
+}
+
+.column-page-inner {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+/* ヘッダー */
+.column-page-header {
+  margin-bottom: 2.5rem;
+}
+
+.column-header-title-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.page-tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: #41c9b4;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+.column-page-header h1 {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 900;
+  color: #fff;
+  margin: 0 0 0.5rem;
+  letter-spacing: -0.02em;
+}
+
+.column-page-header p {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.5);
+  margin: 0;
+}
+
+.note-follow-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #41c9b4;
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 700;
+  padding: 0.55rem 1.2rem;
+  border-radius: 999px;
+  transition: opacity 0.15s, transform 0.15s;
+  flex-shrink: 0;
+}
+
+.note-follow-btn:hover {
+  opacity: 0.85;
+  transform: translateY(-1px);
+}
+
+.note-logo-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  background: #fff;
+  color: #41c9b4;
+  border-radius: 4px;
+  font-size: 0.78rem;
+  font-weight: 900;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+/* グリッド */
+.column-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.2rem;
+}
+
+/* カード */
+.column-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 1.5rem;
+  text-decoration: none;
+  color: inherit;
+  gap: 1.2rem;
+  transition: background 0.2s, border-color 0.2s, transform 0.2s;
+}
+
+.column-card:hover {
+  background: rgba(255,255,255,0.07);
+  border-color: rgba(65,201,180,0.3);
+  transform: translateY(-3px);
+}
+
+.column-card-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.column-card-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.5;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.column-card:hover .column-card-title {
+  color: #41c9b4;
+}
+
+.column-card-excerpt {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.7;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.column-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.2rem;
+}
+
+.column-tag {
+  font-size: 0.73rem;
+  color: #41c9b4;
+  opacity: 0.8;
+  font-weight: 500;
+}
+
+/* フッター */
+.column-card-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255,255,255,0.07);
+}
+
+.column-author {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.column-author-emoji {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.column-author-name {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: rgba(255,255,255,0.6);
+}
+
+.column-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.column-date,
+.column-read,
+.column-like {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.3);
+}
+
+.column-sep {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.2);
+}
+
+.column-like {
+  color: rgba(255,255,255,0.4);
+}
+
+/* もっと読むボタン */
+.column-more {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+}
+
+.column-more-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: rgba(65,201,180,0.1);
+  border: 1px solid rgba(65,201,180,0.3);
+  color: #41c9b4;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 700;
+  padding: 0.8rem 2rem;
+  border-radius: 999px;
+  transition: background 0.15s, transform 0.15s;
+}
+
+.column-more-btn:hover {
+  background: rgba(65,201,180,0.18);
+  transform: translateY(-2px);
+}
+
+.column-more-btn .note-logo-mark {
+  color: #41c9b4;
+  background: rgba(65,201,180,0.2);
+  border: 1px solid rgba(65,201,180,0.4);
+}

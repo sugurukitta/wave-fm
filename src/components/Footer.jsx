@@ -29,6 +29,7 @@ const Footer = () => {
                 <li><Link to="/episodes">エピソード一覧</Link></li>
                 <li><Link to="/hosts">パーソナリティ</Link></li>
                 <li><Link to="/about">番組について</Link></li>
+                <li><Link to="/column">コラム（note）</Link></li>
               </ul>
             </div>
             <div className="footer-col">

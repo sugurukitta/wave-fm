@@ -68,6 +68,23 @@
   background: rgba(255, 255, 255, 0.1);
 }
 
+.nav-link-with-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.nav-badge {
+  font-size: 0.65rem;
+  font-weight: 800;
+  background: #41c9b4;
+  color: #fff;
+  padding: 0.1rem 0.45rem;
+  border-radius: 4px;
+  letter-spacing: 0.03em;
+  line-height: 1.4;
+}
+
 .header-actions {
   display: flex;
   align-items: center;
