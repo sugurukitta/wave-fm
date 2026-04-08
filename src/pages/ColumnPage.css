@@ -237,3 +237,83 @@
   background: rgba(65,201,180,0.2);
   border: 1px solid rgba(65,201,180,0.4);
 }
+
+/* サムネイル */
+.column-card-thumb {
+  width: 100%;
+  height: 160px;
+  border-radius: 10px;
+  overflow: hidden;
+  background: rgba(255,255,255,0.05);
+  margin-bottom: 0.2rem;
+}
+
+.column-card-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+
+.column-card:hover .column-card-thumb img {
+  transform: scale(1.04);
+}
+
+.column-author-icon {
+  font-size: 1rem;
+}
+
+/* スケルトン */
+.skeleton {
+  pointer-events: none;
+}
+
+.skel {
+  background: linear-gradient(
+    90deg,
+    rgba(255,255,255,0.05) 25%,
+    rgba(255,255,255,0.1) 50%,
+    rgba(255,255,255,0.05) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 6px;
+}
+
+@keyframes shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.skel-title  { height: 20px; width: 90%; margin-bottom: 10px; }
+.skel-line   { height: 14px; width: 100%; margin-bottom: 8px; }
+.skel-short  { width: 60%; }
+.skel-meta   { height: 12px; width: 50%; }
+
+/* エラー・空状態 */
+.column-error,
+.column-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 5rem 2rem;
+  text-align: center;
+}
+
+.column-error span,
+.column-empty span {
+  font-size: 2.5rem;
+}
+
+.column-error p,
+.column-empty p {
+  color: rgba(255,255,255,0.5);
+  font-size: 0.97rem;
+  margin: 0;
+}
+
+.column-error-detail {
+  font-size: 0.8rem !important;
+  color: rgba(255,255,255,0.25) !important;
+}
