@@ -28,7 +28,7 @@ const Header = ({ onSearch }) => {
     <header className="header">
       <div className="header-inner">
         <NavLink className="logo" to="/" onClick={() => setMenuOpen(false)}>
-          <span className="logo-wave">🌿</span>
+          <span className="logo-wave">🎙️</span>
           <span className="logo-text">ガジュマルのさんぽ</span>
         </NavLink>
 
