@@ -3,11 +3,10 @@ import icon from '../assets/icon.png'
 import './Hero.css'
 
 const PLATFORMS = [
-  { label: 'Spotify', icon: '🎵', url: 'https://open.spotify.com/show/1AjJaPVapB5v1PpeFqWm1j' },
-  { label: 'Apple Podcasts', icon: '🎙️', url: '#' },
-  { label: 'YouTube', icon: '▶️', url: '#' },
-  { label: 'Amazon Music', icon: '🎶', url: '#' },
-  { label: 'RSS', icon: '📡', url: 'https://note.com/ready_hawk8653/rss/' },
+  { label: 'Spotify',       icon: '🎵', url: 'https://open.spotify.com/show/1AjJaPVapB5v1PpeFqWm1j' },
+  { label: 'Apple Podcasts',icon: '🎙️', url: 'https://podcasts.apple.com/us/podcast/ガジュマルのさんぽ/id1861681070' },
+  { label: 'YouTube',       icon: '▶️', url: 'https://youtube.com/channel/UCuUfqBJAXMFKIVbo-0LPOvg?si=8Kwv9geyjggWV744' },
+  { label: 'Amazon Music',  icon: '🎶', url: 'https://x.gd/MfDnn' },
 ]
 
 const Hero = () => {
