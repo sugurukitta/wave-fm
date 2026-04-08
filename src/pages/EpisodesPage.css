@@ -5,278 +5,363 @@
 }
 
 .ep-page-inner {
-  max-width: 960px;
+  max-width: 860px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
 }
 
-.ep-page-header {
-  margin-bottom: 2.5rem;
+/* ヘッダー */
+.ep-page-header { }
+
+.page-tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: #f0c040;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
 }
 
 .ep-page-header h1 {
   font-size: clamp(1.8rem, 4vw, 2.8rem);
   font-weight: 900;
   color: #fff;
-  margin: 0 0 0.6rem;
+  margin: 0 0 0.5rem;
   letter-spacing: -0.02em;
 }
 
 .ep-page-header p {
   font-size: 1rem;
   color: rgba(255,255,255,0.5);
+  margin: 0;
 }
 
-.ep-page-controls {
+/* ── プレイヤーセクション ── */
+.player-section {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.player-platform-tabs {
   display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 1.2rem;
-  flex-wrap: wrap;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
 }
 
-.ep-filter-tabs {
-  display: flex;
-  gap: 0.4rem;
-  background: rgba(255,255,255,0.05);
-  padding: 0.3rem;
-  border-radius: 12px;
-}
-
-.filter-tab {
+.platform-tab {
+  flex: 1;
   background: none;
   border: none;
-  color: rgba(255,255,255,0.5);
-  font-size: 0.85rem;
+  color: rgba(255,255,255,0.45);
+  font-size: 0.88rem;
   font-weight: 600;
-  padding: 0.4rem 0.9rem;
-  border-radius: 8px;
+  padding: 0.85rem 0.5rem;
   cursor: pointer;
   font-family: inherit;
   transition: background 0.15s, color 0.15s;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+}
+
+.platform-tab:hover {
+  color: rgba(255,255,255,0.8);
+  background: rgba(255,255,255,0.04);
+}
+
+.platform-tab.active {
+  color: var(--platform-color);
+  border-bottom-color: var(--platform-color);
+  background: rgba(255,255,255,0.04);
+}
+
+.player-embed-wrap {
+  padding: 1.2rem;
+}
+
+.embed-player {
+  border-radius: 12px;
+  display: block;
+}
+
+/* Amazon リダイレクト */
+.amazon-redirect {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+  padding: 3rem 2rem;
+  text-align: center;
+}
+
+.amazon-redirect p {
+  color: rgba(255,255,255,0.55);
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.amazon-open-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(0,168,225,0.15);
+  border: 1px solid rgba(0,168,225,0.35);
+  color: #4ec5f0;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 700;
+  padding: 0.7rem 1.8rem;
+  border-radius: 999px;
+  transition: background 0.15s;
+}
+
+.amazon-open-btn:hover {
+  background: rgba(0,168,225,0.25);
+}
+
+/* ── エピソード詳細一覧 ── */
+.ep-archive-title {
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #fff;
+  margin: 0 0 1rem;
+}
+
+.ep-archive-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.ep-archive-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  overflow: hidden;
+  transition: border-color 0.2s;
+}
+
+.ep-archive-card.open,
+.ep-archive-card:hover {
+  border-color: rgba(240,192,64,0.25);
+}
+
+/* カードヘッダー */
+.ep-archive-header {
+  width: 100%;
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 1.2rem 1.4rem;
+  cursor: pointer;
+  font-family: inherit;
+  display: grid;
+  grid-template-columns: auto 1fr auto auto;
+  gap: 1rem;
+  align-items: center;
+}
+
+.ep-archive-num {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+  flex-shrink: 0;
+}
+
+.ep-step {
+  font-size: 0.72rem;
+  font-weight: 800;
+  color: #f0c040;
+  background: rgba(240,192,64,0.12);
+  border: 1px solid rgba(240,192,64,0.25);
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
   white-space: nowrap;
 }
 
-.filter-tab:hover { color: rgba(255,255,255,0.8); }
-.filter-tab.active {
-  background: rgba(255,255,255,0.1);
-  color: #fff;
-}
-
-.ep-search {
-  flex: 1;
-  min-width: 200px;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
+.ep-part {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.4);
   background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 10px;
-  padding: 0.45rem 0.9rem;
+  padding: 0.15rem 0.5rem;
+  border-radius: 999px;
+  white-space: nowrap;
 }
 
-.ep-search input {
-  background: none;
-  border: none;
-  outline: none;
+.ep-archive-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  min-width: 0;
+}
+
+.ep-archive-title-text {
+  font-size: 0.97rem;
+  font-weight: 700;
   color: #fff;
-  font-size: 0.9rem;
-  width: 100%;
-  font-family: inherit;
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.ep-search input::placeholder { color: rgba(255,255,255,0.25); }
+.ep-archive-sub {
+  display: flex;
+  gap: 0.4rem;
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.35);
+}
 
-.ep-count {
-  font-size: 0.82rem;
+.ep-archive-tags-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.ep-tag {
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.35);
+  background: rgba(255,255,255,0.05);
+  padding: 0.15rem 0.5rem;
+  border-radius: 6px;
+  white-space: nowrap;
+}
+
+.ep-archive-chevron {
+  font-size: 0.65rem;
   color: rgba(255,255,255,0.3);
-  margin-bottom: 1rem;
-  font-weight: 600;
+  flex-shrink: 0;
 }
 
-.ep-rows {
+/* 展開エリア */
+.ep-archive-body {
+  padding: 0 1.4rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding-top: 1.2rem;
+}
+
+.ep-archive-desc {
+  font-size: 0.93rem;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.8;
+  margin: 0;
+}
+
+/* 参考文献 */
+.ep-refs {
+  background: rgba(255,255,255,0.03);
+  border-radius: 10px;
+  padding: 1rem 1.2rem;
   display: flex;
   flex-direction: column;
   gap: 0.6rem;
 }
 
-.ep-row {
-  display: grid;
-  grid-template-columns: 48px 110px 1fr auto;
-  align-items: center;
-  gap: 1rem;
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.07);
-  border-radius: 14px;
-  padding: 1.1rem 1.3rem;
-  transition: border-color 0.2s, background 0.2s;
-}
-
-.ep-row:hover {
-  border-color: rgba(255,255,255,0.12);
-  background: rgba(255,255,255,0.06);
-}
-
-.ep-row.playing {
-  border-color: rgba(240,192,64,0.35);
-  background: rgba(240,192,64,0.04);
-}
-
-.ep-row-num {
-  font-size: 0.82rem;
+.ep-refs-label {
+  font-size: 0.78rem;
   font-weight: 700;
-  color: rgba(255,255,255,0.25);
-  text-align: right;
-}
-
-.ep-row-type {
-  font-size: 0.72rem;
-  font-weight: 800;
-  padding: 0.25rem 0.7rem;
-  border-radius: 999px;
-  text-align: center;
-  letter-spacing: 0.04em;
-  white-space: nowrap;
-}
-
-.ep-row-type.short {
-  background: rgba(72,207,173,0.15);
-  color: #48cfad;
-  border: 1px solid rgba(72,207,173,0.3);
-}
-
-.ep-row-type.long {
-  background: rgba(240,192,64,0.15);
-  color: #f0c040;
-  border: 1px solid rgba(240,192,64,0.3);
-}
-
-.ep-row-main {
-  display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
-  min-width: 0;
-}
-
-.ep-row-title {
-  font-size: 0.97rem;
-  font-weight: 700;
-  color: #fff;
-  margin: 0;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.ep-row-desc {
-  font-size: 0.82rem;
-  color: rgba(255,255,255,0.45);
-  margin: 0;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.ep-row-meta {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  flex-wrap: wrap;
-}
-
-.ep-row-people { display: flex; gap: 0.35rem; flex-wrap: wrap; }
-
-.ep-person {
-  font-size: 0.72rem;
-  font-weight: 600;
-  padding: 0.15rem 0.55rem;
-  border-radius: 999px;
-}
-
-.ep-person.host {
-  background: rgba(108,99,255,0.15);
-  color: #a89cff;
-  border: 1px solid rgba(108,99,255,0.25);
-}
-
-.ep-person.guest {
-  background: rgba(240,192,64,0.12);
-  color: #f0c040;
-  border: 1px solid rgba(240,192,64,0.25);
-}
-
-.ep-row-tags { display: flex; gap: 0.3rem; flex-wrap: wrap; }
-
-.ep-tag {
-  font-size: 0.7rem;
-  color: rgba(255,255,255,0.3);
-  background: rgba(255,255,255,0.05);
-  padding: 0.1rem 0.45rem;
-  border-radius: 5px;
-}
-
-.ep-row-right {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 0.4rem;
-  flex-shrink: 0;
-}
-
-.ep-row-days,
-.ep-row-dur {
-  font-size: 0.75rem;
-  color: rgba(255,255,255,0.3);
-  font-weight: 600;
-  white-space: nowrap;
-}
-
-.ep-row-play {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background: rgba(255,255,255,0.07);
-  border: 1px solid rgba(255,255,255,0.12);
-  color: #fff;
-  font-size: 0.95rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.15s, border-color 0.15s, transform 0.15s;
-}
-
-.ep-row-play:hover {
-  background: rgba(240,192,64,0.2);
-  border-color: rgba(240,192,64,0.5);
-  transform: scale(1.05);
-}
-
-.ep-row-play.active {
-  background: rgba(240,192,64,0.25);
-  border-color: rgba(240,192,64,0.6);
-  color: #f0c040;
-}
-
-.ep-empty {
-  text-align: center;
-  padding: 4rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.8rem;
   color: rgba(255,255,255,0.4);
-  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
 }
 
-.ep-empty span { font-size: 2.5rem; }
+.ep-refs ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
 
-@media (max-width: 768px) {
-  .ep-row {
-    grid-template-columns: 1fr auto;
-    grid-template-rows: auto auto;
+.ep-refs li::before {
+  content: '→ ';
+  color: rgba(255,255,255,0.25);
+  font-size: 0.8rem;
+}
+
+.ep-refs a {
+  font-size: 0.82rem;
+  color: rgba(108,99,255,0.9);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.ep-refs a:hover {
+  color: #a89cff;
+  text-decoration: underline;
+}
+
+/* プラットフォームリンク */
+.ep-archive-platforms {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.ep-platforms-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.3);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.ep-platform-btns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.ep-platform-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 0.4rem 1rem;
+  border-radius: 999px;
+  text-decoration: none;
+  border: 1px solid;
+  transition: opacity 0.15s, transform 0.15s;
+}
+
+.ep-platform-btn:hover {
+  opacity: 0.8;
+  transform: translateY(-1px);
+}
+
+.ep-platform-btn.spotify {
+  background: rgba(29,185,84,0.12);
+  border-color: rgba(29,185,84,0.3);
+  color: #1DB954;
+}
+
+.ep-platform-btn.apple {
+  background: rgba(252,60,68,0.12);
+  border-color: rgba(252,60,68,0.3);
+  color: #fc3c44;
+}
+
+.ep-platform-btn.amazon {
+  background: rgba(0,168,225,0.12);
+  border-color: rgba(0,168,225,0.3);
+  color: #4ec5f0;
+}
+
+@media (max-width: 640px) {
+  .ep-archive-header {
+    grid-template-columns: auto 1fr auto;
   }
-  .ep-row-num { display: none; }
-  .ep-row-type { order: -1; }
-  .ep-row-main { grid-column: 1; }
-  .ep-row-right { grid-column: 2; grid-row: 1 / 3; }
+  .ep-archive-tags-row {
+    display: none;
+  }
 }
