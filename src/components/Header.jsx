@@ -7,6 +7,7 @@ const NAV_ITEMS = [
   { label: 'エピソード', to: '/episodes' },
   { label: 'パーソナリティ', to: '/hosts' },
   { label: '番組について', to: '/about' },
+  { label: 'お問い合わせ', to: '/contact' },
 ]
 
 const NOTE_URL = 'https://note.com/ready_hawk8653'

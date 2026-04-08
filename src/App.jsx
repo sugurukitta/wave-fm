@@ -7,6 +7,7 @@ import EpisodesPage from './pages/EpisodesPage'
 import HostsPage from './pages/HostsPage'
 import AboutPage from './pages/AboutPage'
 import ColumnPage from './pages/ColumnPage'
+import ContactPage from './pages/ContactPage'
 import './App.css'
 
 const AppInner = () => {
@@ -23,6 +24,7 @@ const AppInner = () => {
           <Route path="/hosts" element={<HostsPage />} />
           <Route path="/about" element={<AboutPage />} />
           <Route path="/column" element={<ColumnPage />} />
+          <Route path="/contact" element={<ContactPage />} />
         </Routes>
       </main>
       <Footer />
