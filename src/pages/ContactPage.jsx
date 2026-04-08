@@ -3,7 +3,7 @@ import './ContactPage.css'
 
 // Formspree のフォームID（セットアップ後に差し替えてください）
 // 取得方法: https://formspree.io → 新規フォーム作成 → 通知先を gajumaru.info@gmail.com に設定
-const FORMSPREE_ID = 'YOUR_FORM_ID'
+const FORMSPREE_ID = 'meepddze'
 
 const CONTACT_ITEMS = [
   { icon: '🎙️', label: '番組へのご感想・メッセージ' },
