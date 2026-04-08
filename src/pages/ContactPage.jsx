@@ -1,6 +1,10 @@
 import { useState } from 'react'
 import './ContactPage.css'
 
+// Formspree のフォームID（セットアップ後に差し替えてください）
+// 取得方法: https://formspree.io → 新規フォーム作成 → 通知先を gajumaru.info@gmail.com に設定
+const FORMSPREE_ID = 'YOUR_FORM_ID'
+
 const CONTACT_ITEMS = [
   { icon: '🎙️', label: '番組へのご感想・メッセージ' },
   { icon: '💡', label: 'トピックのご提案' },
@@ -11,7 +15,7 @@ const CONTACT_ITEMS = [
 
 const ContactPage = () => {
   const [form, setForm] = useState({ name: '', email: '', category: '', message: '' })
-  const [submitted, setSubmitted] = useState(false)
+  const [status, setStatus] = useState('idle') // 'idle' | 'sending' | 'success' | 'error'
   const [errors, setErrors] = useState({})
 
   const validate = () => {
@@ -29,30 +33,46 @@ const ContactPage = () => {
     if (errors[name]) setErrors((prev) => ({ ...prev, [name]: '' }))
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
     const errs = validate()
     if (Object.keys(errs).length > 0) { setErrors(errs); return }
 
-    const subject = encodeURIComponent(
-      `[ガジュマルのさんぽ お問い合わせ]${form.category ? ` ${form.category}` : ''}`
-    )
-    const body = encodeURIComponent(
-      `お名前: ${form.name}\nメールアドレス: ${form.email}\n\n${form.message}`
-    )
-    window.location.href = `mailto:gajumarunosampo@gmail.com?subject=${subject}&body=${body}`
-    setSubmitted(true)
+    setStatus('sending')
+    try {
+      const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+        method: 'POST',
+        headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          category: form.category || '未選択',
+          message: form.message,
+        }),
+      })
+      if (res.ok) {
+        setStatus('success')
+        setForm({ name: '', email: '', category: '', message: '' })
+      } else {
+        setStatus('error')
+      }
+    } catch {
+      setStatus('error')
+    }
   }
 
-  if (submitted) {
+  if (status === 'success') {
     return (
       <div className="contact-page">
         <div className="contact-inner">
           <div className="contact-success">
-            <div className="contact-success-icon">✉️</div>
-            <h2>メールクライアントが開きました</h2>
-            <p>メールアプリが開かない場合は、直接 <strong>gajumarunosampo@gmail.com</strong> までご連絡ください。</p>
-            <button className="contact-back-btn" onClick={() => { setSubmitted(false); setForm({ name: '', email: '', category: '', message: '' }) }}>
+            <div className="contact-success-icon">✅</div>
+            <h2>送信が完了しました！</h2>
+            <p>お問い合わせありがとうございます。<br />内容を確認の上、順次ご返信いたします。</p>
+            <button
+              className="contact-back-btn"
+              onClick={() => setStatus('idle')}
+            >
               フォームに戻る
             </button>
           </div>
@@ -143,13 +163,19 @@ const ContactPage = () => {
               {errors.message && <p className="form-error">{errors.message}</p>}
             </div>
 
-            <button type="submit" className="contact-submit-btn">
-              送信する →
-            </button>
+            {status === 'error' && (
+              <p className="form-send-error">
+                送信に失敗しました。しばらく経ってから再度お試しください。
+              </p>
+            )}
 
-            <p className="contact-note">
-              ※ 送信ボタンを押すとメールアプリが開きます。
-            </p>
+            <button
+              type="submit"
+              className="contact-submit-btn"
+              disabled={status === 'sending'}
+            >
+              {status === 'sending' ? '送信中...' : '送信する →'}
+            </button>
 
           </form>
         </div>
