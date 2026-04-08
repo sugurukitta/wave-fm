@@ -12,11 +12,23 @@ const PLATFORMS = [
 // チャンネルID UCuUfqBJAXMFKIVbo-0LPOvg → アップロード再生リスト UUuUfqBJAXMFKIVbo-0LPOvg
 const YOUTUBE_PLAYLIST = 'UUuUfqBJAXMFKIVbo-0LPOvg'
 
+const APPLE_PODCAST_ID = '1861681070'
+
 const EpisodesPage = () => {
   const [activePlatform, setActivePlatform] = useState('spotify')
   const [openEp, setOpenEp] = useState(null)
+  const [playingEp, setPlayingEp] = useState(null)
 
-  const toggleEp = (id) => setOpenEp((prev) => (prev === id ? null : id))
+  const toggleEp = (id) => {
+    setOpenEp((prev) => (prev === id ? null : id))
+    if (playingEp === id) setPlayingEp(null)
+  }
+
+  const togglePlay = (e, id) => {
+    e.stopPropagation()
+    setPlayingEp((prev) => (prev === id ? null : id))
+    setOpenEp(id)
+  }
 
   return (
     <div className="ep-page">
@@ -110,32 +122,58 @@ const EpisodesPage = () => {
               <div key={ep.id} className={`ep-archive-card ${openEp === ep.id ? 'open' : ''}`}>
 
                 {/* カードヘッダー（クリックで開閉） */}
-                <button
-                  className="ep-archive-header"
-                  onClick={() => toggleEp(ep.id)}
-                  aria-expanded={openEp === ep.id}
-                >
-                  <div className="ep-archive-num">
-                    <span className="ep-step">{ep.num}</span>
-                    {ep.part && <span className="ep-part">{ep.part}</span>}
-                  </div>
-                  <div className="ep-archive-meta">
-                    <span className="ep-archive-title-text">{ep.title}</span>
-                    <div className="ep-archive-sub">
-                      <span>{ep.date}</span>
-                      <span>·</span>
-                      <span>{ep.duration}</span>
+                <div className="ep-archive-header-wrap">
+                  <button
+                    className={`ep-play-btn ${playingEp === ep.id ? 'playing' : ''}`}
+                    onClick={(e) => togglePlay(e, ep.id)}
+                    aria-label={playingEp === ep.id ? '停止' : '再生'}
+                    title={playingEp === ep.id ? '停止' : 'このエピソードを再生'}
+                  >
+                    {playingEp === ep.id ? '■' : '▶'}
+                  </button>
+                  <button
+                    className="ep-archive-header"
+                    onClick={() => toggleEp(ep.id)}
+                    aria-expanded={openEp === ep.id}
+                  >
+                    <div className="ep-archive-num">
+                      <span className="ep-step">{ep.num}</span>
+                      {ep.part && <span className="ep-part">{ep.part}</span>}
                     </div>
-                  </div>
-                  <div className="ep-archive-tags-row">
-                    {ep.tags.map((t) => <span className="ep-tag" key={t}>#{t}</span>)}
-                  </div>
-                  <span className="ep-archive-chevron">{openEp === ep.id ? '▲' : '▼'}</span>
-                </button>
+                    <div className="ep-archive-meta">
+                      <span className="ep-archive-title-text">{ep.title}</span>
+                      <div className="ep-archive-sub">
+                        <span>{ep.date}</span>
+                        <span>·</span>
+                        <span>{ep.duration}</span>
+                      </div>
+                    </div>
+                    <div className="ep-archive-tags-row">
+                      {ep.tags.map((t) => <span className="ep-tag" key={t}>#{t}</span>)}
+                    </div>
+                    <span className="ep-archive-chevron">{openEp === ep.id ? '▲' : '▼'}</span>
+                  </button>
+                </div>
 
                 {/* 展開エリア */}
                 {openEp === ep.id && (
                   <div className="ep-archive-body">
+
+                    {/* インラインプレイヤー */}
+                    {playingEp === ep.id && ep.appleEpisodeId && (
+                      <div className="ep-inline-player">
+                        <iframe
+                          title={ep.title}
+                          src={`https://embed.podcasts.apple.com/us/podcast/id${APPLE_PODCAST_ID}?i=${ep.appleEpisodeId}&theme=dark`}
+                          height="175"
+                          frameBorder="0"
+                          sandbox="allow-forms allow-popups allow-same-origin allow-scripts allow-top-navigation-by-user-activation"
+                          allow="autoplay *; encrypted-media *; clipboard-write"
+                          style={{ width: '100%', borderRadius: '12px', background: 'transparent' }}
+                        />
+                      </div>
+                    )}
+
                     <p className="ep-archive-desc">{ep.description}</p>
 
                     {ep.refs.length > 0 && (

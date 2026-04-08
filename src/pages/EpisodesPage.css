@@ -199,6 +199,48 @@
   border-color: rgba(240,192,64,0.25);
 }
 
+/* カードヘッダー外枠（再生ボタン＋ヘッダーの横並び） */
+.ep-archive-header-wrap {
+  display: flex;
+  align-items: stretch;
+}
+
+/* 再生ボタン */
+.ep-play-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 52px;
+  background: rgba(240,192,64,0.08);
+  border: none;
+  border-right: 1px solid rgba(255,255,255,0.06);
+  color: #f0c040;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.ep-play-btn:hover {
+  background: rgba(240,192,64,0.18);
+}
+
+.ep-play-btn.playing {
+  background: rgba(240,192,64,0.2);
+  color: #ffd966;
+}
+
+/* インラインプレイヤー */
+.ep-inline-player {
+  margin-bottom: 1.2rem;
+  animation: fadeInDown 0.3s ease;
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
 /* カードヘッダー */
 .ep-archive-header {
   width: 100%;
