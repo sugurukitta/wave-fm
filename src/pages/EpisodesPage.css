@@ -186,6 +186,63 @@
   gap: 0.7rem;
 }
 
+/* カウントバッジ */
+.ep-count-badge {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: rgba(240,192,64,0.15);
+  color: #f0c040;
+  border: 1px solid rgba(240,192,64,0.3);
+  border-radius: 20px;
+  padding: 0.1rem 0.6rem;
+  margin-left: 0.75rem;
+  vertical-align: middle;
+}
+
+/* スケルトンローディング */
+@keyframes ep-shimmer {
+  0% { background-position: -400px 0; }
+  100% { background-position: 400px 0; }
+}
+
+.ep-skeleton-card {
+  padding: 1.1rem 1.4rem;
+}
+
+.ep-skel-row {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.ep-skel {
+  border-radius: 6px;
+  background: linear-gradient(90deg, rgba(255,255,255,0.05) 25%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.05) 75%);
+  background-size: 400px 100%;
+  animation: ep-shimmer 1.4s infinite linear;
+}
+
+.ep-skel-num  { width: 36px; height: 36px; border-radius: 8px; flex-shrink: 0; }
+.ep-skel-meta { flex: 1; display: flex; flex-direction: column; gap: 0.5rem; }
+.ep-skel-title { height: 14px; width: 60%; }
+.ep-skel-sub   { height: 11px; width: 30%; }
+
+/* エラー */
+.ep-fetch-error {
+  text-align: center;
+  padding: 3rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.6rem;
+  color: rgba(255,255,255,0.45);
+}
+
+.ep-fetch-error span { font-size: 2.5rem; }
+.ep-fetch-error p { margin: 0; }
+.ep-fetch-error-detail { font-size: 0.8rem; color: rgba(255,255,255,0.25); }
+
 .ep-archive-card {
   background: rgba(255,255,255,0.04);
   border: 1px solid rgba(255,255,255,0.08);
