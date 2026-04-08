@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { hosts } from '../data/episodes'
 import icon from '../assets/icon.png'
 import './Hero.css'
@@ -10,6 +11,8 @@ const PLATFORMS = [
 ]
 
 const Hero = () => {
+  const [modalOpen, setModalOpen] = useState(false)
+
   return (
     <section className="hero">
       <div className="hero-inner">
@@ -85,9 +88,15 @@ const Hero = () => {
         <div className="hero-icon-wrap">
           <div className="hero-icon-ring hero-icon-ring-outer" />
           <div className="hero-icon-ring hero-icon-ring-inner" />
-          <div className="hero-icon-frame">
+          <button
+            className="hero-icon-frame hero-icon-btn"
+            onClick={() => setModalOpen(true)}
+            aria-label="アイコンについて"
+            title="アイコンについて"
+          >
             <img src={icon} alt="ガジュマルのさんぽ" className="hero-icon-img" />
-          </div>
+            <div className="hero-icon-hint">？</div>
+          </button>
           <div className="hero-icon-label">
             <span className="hero-icon-dot" />
             ON AIR
@@ -95,6 +104,33 @@ const Hero = () => {
         </div>
 
       </div>
+
+      {/* モーダル */}
+      {modalOpen && (
+        <div className="icon-modal-overlay" onClick={() => setModalOpen(false)}>
+          <div className="icon-modal" onClick={(e) => e.stopPropagation()}>
+            <div className="icon-modal-img">
+              <img src={icon} alt="ガジュマルのさんぽ" />
+            </div>
+            <div className="icon-modal-body">
+              <h3>🌿 アイコンについて</h3>
+              <p>
+                私たちのラジオ番組のシンボルとして、沖縄のガジュマルの木と、そこに宿るとされる<strong>キジムナー</strong>という精霊をアイコンにしています。
+              </p>
+              <p>
+                ガジュマルは豊かな自然の象徴であり、キジムナーはその森を守る精霊として語り継がれてきました。それはまさに、私たちが目指す持続可能な未来や自然との共生を象徴する存在でもあります。
+              </p>
+              <p>
+                このように、番組を通じて環境やエネルギーについて考えるきっかけを、ガジュマルとキジムナーの物語とともにお届けできれば嬉しいです。
+              </p>
+            </div>
+            <button className="icon-modal-close" onClick={() => setModalOpen(false)}>
+              ✕
+            </button>
+          </div>
+        </div>
+      )}
+
     </section>
   )
 }
