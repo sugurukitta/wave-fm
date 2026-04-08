@@ -3,11 +3,11 @@ import icon from '../assets/icon.png'
 import './Hero.css'
 
 const PLATFORMS = [
-  { label: 'Spotify', icon: '🎵' },
-  { label: 'Apple Podcasts', icon: '🎙️' },
-  { label: 'YouTube', icon: '▶️' },
-  { label: 'Amazon Music', icon: '🎶' },
-  { label: 'RSS', icon: '📡' },
+  { label: 'Spotify', icon: '🎵', url: 'https://open.spotify.com/show/1AjJaPVapB5v1PpeFqWm1j' },
+  { label: 'Apple Podcasts', icon: '🎙️', url: '#' },
+  { label: 'YouTube', icon: '▶️', url: '#' },
+  { label: 'Amazon Music', icon: '🎶', url: '#' },
+  { label: 'RSS', icon: '📡', url: 'https://note.com/ready_hawk8653/rss/' },
 ]
 
 const Hero = () => {
@@ -52,11 +52,17 @@ const Hero = () => {
           <div className="platforms">
             <span className="platforms-label">配信中のプラットフォーム</span>
             <div className="platform-btns">
-              {PLATFORMS.map((p) => (
-                <a key={p.label} href="#" className="platform-btn">
-                  <span>{p.icon}</span> {p.label}
-                </a>
-              ))}
+            {PLATFORMS.map((p) => (
+              <a
+                key={p.label}
+                href={p.url}
+                target={p.url !== '#' ? '_blank' : undefined}
+                rel="noopener noreferrer"
+                className="platform-btn"
+              >
+                <span>{p.icon}</span> {p.label}
+              </a>
+            ))}
             </div>
           </div>
 
