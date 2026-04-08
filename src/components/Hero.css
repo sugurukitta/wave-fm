@@ -58,13 +58,15 @@
   height: auto;
   display: block;
   object-fit: contain;
-  mix-blend-mode: multiply;
+  filter:
+    drop-shadow(0 4px 14px rgba(101,67,33,0.22))
+    drop-shadow(0 1px 5px rgba(101,67,33,0.14));
   animation: heroLogoFloat 5s ease-in-out infinite;
 }
 
 @keyframes heroLogoFloat {
   0%, 100% { transform: translateY(0px); }
-  50%       { transform: translateY(-7px); }
+  50%       { transform: translateY(-8px); }
 }
 
 .hero-desc {
