@@ -49,22 +49,26 @@
 }
 
 .hero-title {
-  font-size: clamp(2.4rem, 6vw, 4.2rem);
-  font-weight: 900;
-  line-height: 1.15;
-  letter-spacing: -0.03em;
   margin: 0;
+  line-height: 1;
 }
 
-.hero-show-name {
-  display: inline-block;
-  font-size: clamp(2.4rem, 6vw, 4.2rem);
-  font-weight: 900;
-  letter-spacing: -0.02em;
-  background: linear-gradient(135deg, #B8860B 0%, var(--green-dark) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+.hero-logo-img {
+  /* 画像の白背景を考慮して横幅を設定 */
+  max-width: min(420px, 90%);
+  height: auto;
+  display: block;
+  object-fit: contain;
+  filter:
+    drop-shadow(0 4px 12px rgba(101,67,33,0.2))
+    drop-shadow(0 1px 4px rgba(101,67,33,0.15));
+  transition: filter 0.3s, transform 0.3s;
+  animation: heroLogoFloat 4s ease-in-out infinite;
+}
+
+@keyframes heroLogoFloat {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-6px); }
 }
 
 .hero-desc {

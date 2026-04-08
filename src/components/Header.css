@@ -23,22 +23,23 @@
 .logo {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
   text-decoration: none;
   flex-shrink: 0;
 }
 
-.logo-wave { font-size: 1.4rem; line-height: 1; }
+.logo-img {
+  height: 42px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+  /* 画像の余白（白背景）をトリミングする視覚効果 */
+  filter: drop-shadow(0 1px 3px rgba(101,67,33,0.15));
+  transition: opacity 0.2s, transform 0.2s;
+}
 
-.logo-text {
-  font-size: 1.1rem;
-  font-weight: 900;
-  background: linear-gradient(135deg, var(--yellow-dark), var(--green-dark));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  letter-spacing: 0.02em;
-  white-space: nowrap;
+.logo:hover .logo-img {
+  opacity: 0.85;
+  transform: scale(1.03);
 }
 
 .nav {

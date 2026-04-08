@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { hosts } from '../data/episodes'
 import icon from '../assets/icon.png'
+import logoImg from '../assets/logo.png'
 import './Hero.css'
 
 const SpotifyIcon = () => (
@@ -74,7 +75,7 @@ const Hero = () => {
         {/* 左カラム：テキスト情報 */}
         <div className="hero-text">
           <h1 className="hero-title">
-            <span className="hero-show-name">ガジュマルのさんぽ</span>
+            <img src={logoImg} alt="ガジュマルのさんぽ" className="hero-logo-img" />
           </h1>
 
           <p className="hero-desc">

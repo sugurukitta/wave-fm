@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
+import logoImg from '../assets/logo.png'
 import './Header.css'
 
 const NAV_ITEMS = [
@@ -29,8 +30,7 @@ const Header = ({ onSearch }) => {
     <header className="header">
       <div className="header-inner">
         <NavLink className="logo" to="/" onClick={() => setMenuOpen(false)}>
-          <span className="logo-wave">🎙️</span>
-          <span className="logo-text">ガジュマルのさんぽ</span>
+          <img src={logoImg} alt="ガジュマルのさんぽ" className="logo-img" />
         </NavLink>
 
         <nav className={`nav ${menuOpen ? 'open' : ''}`}>
