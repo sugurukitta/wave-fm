@@ -74,7 +74,6 @@ const EpisodesPage = () => {
                 <div className="youtube-redirect-icon">▶️</div>
                 <p className="youtube-redirect-title">YouTubeで視聴する</p>
                 <p className="youtube-redirect-desc">
-                  YouTubeはサイト内での埋め込み再生ができないため、<br />
                   YouTubeのチャンネルページに移動して視聴できます。
                 </p>
                 <a
