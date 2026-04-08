@@ -1,3 +1,37 @@
+/* ── カラーシステム ── */
+:root {
+  --yellow:       #FFEE58;
+  --yellow-dark:  #F9A825;
+  --yellow-light: #FFFDE7;
+  --green:        #81C784;
+  --green-dark:   #388E3C;
+  --green-deep:   #1B5E20;
+  --green-light:  #E8F5E9;
+
+  --bg:           #F7FDF8;
+  --bg-alt:       #EEF9EF;
+  --bg-card:      #FFFFFF;
+  --bg-card-alt:  #F0FBF1;
+
+  --text:         #1C3320;
+  --text-sub:     #3D6142;
+  --text-muted:   #7AA87E;
+  --text-on-grad: #1C3320;
+
+  --border:       rgba(129,199,132,0.3);
+  --border-strong:rgba(129,199,132,0.55);
+
+  --grad-main:    linear-gradient(135deg, #FFEE58 0%, #81C784 100%);
+  --grad-soft:    linear-gradient(135deg, #FFFDE7 0%, #E8F5E9 100%);
+  --grad-hero:    linear-gradient(160deg, #FFFDE7 0%, #E8F5E9 50%, #C8E6C9 100%);
+  --grad-accent:  linear-gradient(135deg, #FFF176 0%, #A5D6A7 100%);
+
+  --shadow-sm:    0 2px 8px rgba(56,142,60,0.10);
+  --shadow-md:    0 6px 24px rgba(56,142,60,0.13);
+  --shadow-lg:    0 12px 40px rgba(56,142,60,0.16);
+  --shadow-yellow:0 4px 20px rgba(255,238,88,0.45);
+}
+
 *,
 *::before,
 *::after {
@@ -6,13 +40,11 @@
   padding: 0;
 }
 
-html {
-  scroll-behavior: smooth;
-}
+html { scroll-behavior: smooth; }
 
 body {
-  background: #0c0c14;
-  color: #fff;
+  background: var(--bg);
+  color: var(--text);
   font-family:
     'Hiragino Kaku Gothic ProN',
     'Hiragino Sans',
@@ -28,20 +60,32 @@ body {
 }
 
 ::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: #0c0c14; }
+::-webkit-scrollbar-track { background: var(--bg); }
 ::-webkit-scrollbar-thumb {
-  background: rgba(240, 192, 64, 0.3);
+  background: var(--green);
   border-radius: 3px;
 }
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(240, 192, 64, 0.55);
-}
+::-webkit-scrollbar-thumb:hover { background: var(--green-dark); }
 
 ::selection {
-  background: rgba(240, 192, 64, 0.25);
-  color: #fff;
+  background: rgba(255,238,88,0.45);
+  color: var(--green-deep);
 }
 
 button { font-family: inherit; }
 a { color: inherit; }
 img { max-width: 100%; }
+
+/* ── 共通ユーティリティ ── */
+.page-tag {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  background: var(--grad-main);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.75rem;
+}

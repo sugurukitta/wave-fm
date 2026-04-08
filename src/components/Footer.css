@@ -1,6 +1,5 @@
 .footer {
-  background: #080812;
-  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  background: var(--green-deep);
 }
 
 .footer-bottom {
@@ -10,6 +9,6 @@
 
 .footer-bottom p {
   font-size: 0.82rem;
-  color: rgba(255, 255, 255, 0.25);
+  color: rgba(255,255,255,0.45);
   margin: 0;
 }
