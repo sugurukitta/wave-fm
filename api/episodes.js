@@ -23,6 +23,29 @@ function parseTitle(name) {
   return { num, part, title }
 }
 
+// 参考文献・参考サイト以降を除去する
+function trimDescription(text) {
+  if (!text) return ''
+  const STOP_PATTERNS = [
+    /参考文献/,
+    /参考サイト/,
+    /参考リンク/,
+    /参考：/,
+    /参考情報/,
+    /【参考/,
+    /■参考/,
+    /▼参考/,
+    /◆参考/,
+    /\n\s*https?:\/\//,   // 行頭URL（URLリストが続く場合）
+  ]
+  let cutIndex = text.length
+  for (const pattern of STOP_PATTERNS) {
+    const match = text.search(pattern)
+    if (match !== -1 && match < cutIndex) cutIndex = match
+  }
+  return text.slice(0, cutIndex).trim()
+}
+
 export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*')
   res.setHeader('Cache-Control', 's-maxage=3600, stale-while-revalidate=86400')
@@ -50,7 +73,7 @@ export default async function handler(req, res) {
           date:           formatDate(ep.releaseDate),
           releaseTs:      +new Date(ep.releaseDate),
           duration:       formatDuration(ep.trackTimeMillis),
-          description:    ep.description || ep.shortDescription || '',
+          description:    trimDescription(ep.description || ep.shortDescription || ''),
           appleEpisodeId: String(ep.trackId),
           appleUrl:       ep.trackViewUrl || `https://podcasts.apple.com/us/podcast/id${APPLE_PODCAST_ID}`,
           spotifyUrl:     `https://open.spotify.com/show/${SPOTIFY_SHOW_ID}`,
