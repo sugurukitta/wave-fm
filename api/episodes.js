@@ -33,6 +33,7 @@ function trimDescription(text) {
     /参考：/,
     /参考情報/,
     /【参考/,
+    /＜参考/,
     /■参考/,
     /▼参考/,
     /◆参考/,
